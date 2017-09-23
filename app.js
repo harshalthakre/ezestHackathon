@@ -34,6 +34,16 @@ app.get('/api/users/:id',function(req,res){
   })
 })
 
+app.get('/api/user/:email',function(req,res){
+  User.getUserByEmail(req.params.email,function(err,user){
+    if(err) {
+      console.log("user req by id is: "+user);
+      res.json(user);
+    }
+    res.json(user);
+  })
+})
+
 app.post('/api/users',function(req,res){
   var user=req.body;
   User.addUser(user,function(err,user){
@@ -50,6 +60,8 @@ app.put('/api/users/:id',function(req,res){
     res.json(user);
   })
 })
+
+
 
 app.listen(3000);
 console.log("listening to port 3000");

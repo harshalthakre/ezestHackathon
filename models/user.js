@@ -48,6 +48,11 @@ module.exports.getUserById=function(id,callback){
   User.findById(id,callback);
 }
 
+module.exports.getUserByEmail=function(email,callback){
+  console.log("m in email");
+  User.findOne({"email":email},callback);
+}
+
 // Add user Signup
 module.exports.addUser=function(user,callback){
   User.create(user,callback);
